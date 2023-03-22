@@ -1,7 +1,27 @@
 import React from "react";
 import regs from "../images/Login-rafiki.svg";
+import axios from "axios";
 
 const Register = () => {
+  function reg(e) {
+    e.preventDefault();
+    if (document.getElementById("pwd1").value != document.getElementById("pwd2").value) {
+      document.getElementById("passwordmatch").textContent =
+        "Passwords does not match, Please try again";
+      return;
+    }
+    const user = {
+      username: document.getElementById("username").value,
+      email: document.getElementById("email").value,
+      company: document.getElementById("companyname").value,
+      password: document.getElementById("pwd1").value,
+      pwd2: document.getElementById("pwd2").value,
+    };
+    axios.post("http://localhost:4000/app/signup", user).then((res) => {
+      console.log(res.data);
+    });
+    // window.location.href = "http://localhost:3000/login";
+  }
   return (
     <>
       <div className="container shadow my-5">
@@ -23,7 +43,7 @@ const Register = () => {
           </div>
           <div className="col-md-6 p-5">
             <h1 className="display-6 fw-bolder text-center mb-4 ">Register</h1>
-            <form>
+            <form onSubmit={reg}>
               <div class="mb-3 col-sm-10">
                 <label for="exampleFormControlInput1" class="form-label">
                   <h5>User Name</h5>
@@ -42,7 +62,7 @@ const Register = () => {
                 <input
                   type="email"
                   class="form-control"
-                  id="exampleFormControlInput1"
+                  id="email"
                   placeholder="name@example.com"
                 />
               </div>
@@ -53,7 +73,7 @@ const Register = () => {
                 <input
                   type="text"
                   class="form-control"
-                  id="name"
+                  id="companyname"
                   placeholder="Company Name"
                 />
               </div>
@@ -62,21 +82,13 @@ const Register = () => {
                   <h5>Password</h5>
                 </label>
                 <div class="col-sm-10">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="inputPassword"
-                  />
+                  <input type="password" class="form-control" id="pwd1" />
                 </div>
-                <label for="inputPassword" class="col-sm-2 col-form-label">
+                <label for="inputPassword2" class="col-sm-2 col-form-label">
                   <h5>ConfirmPassword</h5>
                 </label>
                 <div class="col-sm-10">
-                  <input
-                    type="password"
-                    class="form-control"
-                    id="inputPassword"
-                  />
+                  <input type="password" class="form-control" id="pwd2" />
                 </div>
                 <div class="col-12 text-center pt-5">
                   <button
@@ -85,6 +97,9 @@ const Register = () => {
                   >
                     Submit
                   </button>
+                </div>
+                <div>
+                  <h3 id="passwordmatch"> </h3>
                 </div>
               </div>
             </form>
