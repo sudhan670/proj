@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import axios from "axios";
-
 function Navbar() {
   function loggedIn() {
-    console.log("logged In chk");
+    console.log("Navbar chk");
     axios
       .post(
-        "http://localhost:4000/app/login",
+        "http://localhost:4000/app/loggedIn",
         {},
         {
           withCredentials: true,
         }
       )
       .then((res) => {
-        console.log(res);
-        if (res.data === "home") {
-          window.location.href = "http://localhost:3000";
+        console.log(res.data);
+        if (res.data === "userloggedIn") {
+          console.log(res.data === "userloggedIn,if");
+          setStat(1);
+        } else {
+          console.log(res.data === "else");
+          setStat(0);
         }
       })
       .catch((err) => {
         console.log(err);
       });
+    return false;
   }
+  const [stat, setStat] = useState(loggedIn);
 
   return (
     <>
@@ -78,7 +83,41 @@ function Navbar() {
             <Link class="navbar-brand pt-3" to="#">
               <b>VGD TEXTILES</b>
             </Link>
-            {loggedIn}
+            {stat === 1 ? (
+              <Link
+                to="/logout"
+                class="btn btn-primary ms-auto px-4 solid-pill "
+                type="submit"
+              >
+                :<i className="fa fa-sign-in me-2"></i>Logout
+              </Link>
+            ) : (
+              <div>
+                <Link
+                  to="/login"
+                  class="btn btn-primary ms-auto px-4 solid-pill "
+                  type="submit"
+                >
+                  <i className="fa fa-sign-in me-2"></i>Login
+                </Link>
+                <Link
+                  to="/register"
+                  class="btn btn-outline-primary ms-2 px-4 solid-pill "
+                  type="submit"
+                >
+                  <i className="fa fa-user-plus me-2"></i>Register
+                </Link>
+              </div>
+            )}
+
+            {/* <Link
+              to="/logout"
+              class="btn btn-primary ms-auto px-4 solid-pill "
+              type="submit"
+            >
+              :<i className="fa fa-sign-in me-2"></i>Logout
+            </Link>
+
             <Link
               to="/login"
               class="btn btn-primary ms-auto px-4 solid-pill "
@@ -92,7 +131,7 @@ function Navbar() {
               type="submit"
             >
               <i className="fa fa-user-plus me-2"></i>Register
-            </Link>
+            </Link> */}
           </div>
         </div>
       </nav>
