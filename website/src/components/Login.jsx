@@ -1,16 +1,53 @@
 import React from "react";
 import login from "../images/login.svg";
+import axios from "axios";
 
 const Login = () => {
+  function loggedIn() {
+    console.log("logged In chk");
+    axios
+      .post(
+        "http://localhost:4000/app/loggedIn",
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.data === "userloggedIn") {
+          window.location.href = "http://localhost:3000";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   function log(e) {
     e.preventDefault();
-    console.log(
-      document.getElementById("mail").value,
-      document.getElementById("pwd").value
-    );
+    const user = {
+      username: document.getElementById("username").value,
+      password: document.getElementById("pwd").value,
+    };
+    axios
+      .post("http://localhost:4000/app/login", user, {
+        withCredentials: true,
+      })
+      .then((res) => {
+        console.log(res);
+        if (res.data === "home") {
+          window.location.href = "http://localhost:3000";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
+
   return (
     <>
+      {loggedIn()}
       <div className="container shadow my-5">
         <div className="row">
           <div className="col-md-5 d-flex flex-column align-items-center text-white form">
@@ -36,7 +73,7 @@ const Login = () => {
                 <input
                   type="email"
                   class="form-control"
-                  id="mail"
+                  id="username"
                   placeholder="name@example.com"
                 />
               </div>
@@ -46,17 +83,6 @@ const Login = () => {
                 </label>
                 <div class="col-sm-10">
                   <input type="password" class="form-control" id="pwd" />
-                </div>
-                <div class="col-12 pt-3">
-                  <input
-                    class="form-check-input gap"
-                    type="checkbox"
-                    value=""
-                    id="flexCheckDefault"
-                  />
-                  <label class="form-check-label" for="flexCheckDefault">
-                    Remember Me
-                  </label>
                 </div>
                 <div class="col-12 text-center pt-5">
                   <button

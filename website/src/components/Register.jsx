@@ -3,9 +3,33 @@ import regs from "../images/Login-rafiki.svg";
 import axios from "axios";
 
 const Register = () => {
+  function loggedIn() {
+    console.log("logged In chk");
+    axios
+      .post(
+        "http://localhost:4000/app/loggedIn",
+        {},
+        {
+          withCredentials: true,
+        }
+      )
+      .then((res) => {
+        console.log(res);
+        if (res.data === "userloggedIn") {
+          window.location.href = "http://localhost:3000";
+        }
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
+
   function reg(e) {
     e.preventDefault();
-    if (document.getElementById("pwd1").value != document.getElementById("pwd2").value) {
+    if (
+      document.getElementById("pwd1").value !==
+      document.getElementById("pwd2").value
+    ) {
       document.getElementById("passwordmatch").textContent =
         "Passwords does not match, Please try again";
       return;
@@ -17,13 +41,19 @@ const Register = () => {
       password: document.getElementById("pwd1").value,
       pwd2: document.getElementById("pwd2").value,
     };
-    axios.post("http://localhost:4000/app/signup", user).then((res) => {
-      console.log(res.data);
-    });
-    // window.location.href = "http://localhost:3000/login";
+    axios
+      .post("http://localhost:4000/app/signup", user, { withCredentials: true })
+      .then((res) => {
+        console.log(res);
+        // window.location.href = "http://localhost:3000/login";
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
   return (
     <>
+      {loggedIn()}
       <div className="container shadow my-5">
         <div className="row justify-content-end">
           <div className="col-md-5 d-flex flex-column align-items-center text-white form order-2">
