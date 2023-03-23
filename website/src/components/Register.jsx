@@ -27,7 +27,7 @@ const Register = () => {
       })
       .then((res) => {
         console.log(res);
-        // window.location.href = "http://localhost:3000/login";
+        window.location.href = "http://localhost:3000/login";
       })
       .catch((err) => {
         console.log(err);
