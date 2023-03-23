@@ -7,7 +7,7 @@ const Login = () => {
     console.log("logged In chk");
     axios
       .post(
-        "http://localhost:4000/app/loggedIn",
+        "https://inventory-manager-70zs.onrender.com/app/loggedIn",
         {},
         {
           withCredentials: true,
@@ -31,7 +31,7 @@ const Login = () => {
       password: document.getElementById("pwd").value,
     };
     axios
-      .post("http://localhost:4000/app/login", user, {
+      .post("https://inventory-manager-70zs.onrender.com/app/login", user, {
         withCredentials: true,
       })
       .then((res) => {
