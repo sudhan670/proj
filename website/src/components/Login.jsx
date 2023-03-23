@@ -17,7 +17,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         if (res.data === "home") {
-          window.location.href = "http://localhost:3000";
+           window.location.href = "http://localhost:3000";
         }
       })
       .catch((err) => {
