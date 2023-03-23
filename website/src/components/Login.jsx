@@ -17,7 +17,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         if (res.data === "home") {
-           window.location.href = "http://localhost:3000";
+          //  window.location.href = "http://localhost:3000";
         }
       })
       .catch((err) => {
@@ -47,7 +47,10 @@ const Login = () => {
             <h1 className="display-6 fw-bolder text-center mb-4 ">Login</h1>
             <form onSubmit={log}>
               <div className="mb-3 col-sm-10">
-                <label htmlFor="exampleFormControlInput1" className="form-label">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
                   <h5>Email Address</h5>
                 </label>
                 <input
@@ -58,7 +61,10 @@ const Login = () => {
                 />
               </div>
               <div className="md-3">
-                <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
+                <label
+                  htmlFor="inputPassword"
+                  className="col-sm-2 col-form-label"
+                >
                   <h5>Password</h5>
                 </label>
                 <div className="col-sm-10">

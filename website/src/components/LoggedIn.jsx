@@ -1,7 +1,7 @@
 import axios from "axios";
 import endurl from "./endurl";
 function loggedIn() {
-  console.log("logged In chk");
+  console.log("chk for cookie");
   axios
     .post(
       endurl + "/loggedIn",
