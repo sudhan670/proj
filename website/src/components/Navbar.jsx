@@ -6,7 +6,7 @@ function Navbar() {
     console.log("Navbar chk");
     axios
       .post(
-        "http://localhost:4000/app/loggedIn",
+        "https://inventory-manager-70zs.onrender.com/app/loggedIn",
         {},
         {
           withCredentials: true,
@@ -18,7 +18,7 @@ function Navbar() {
           console.log(res.data === "userloggedIn,if");
           setStat(1);
         } else {
-          console.log(res.data === "else");
+          console.log(res.data);
           setStat(0);
         }
       })
