@@ -1,29 +1,9 @@
 import React from "react";
 import login from "../images/login.svg";
 import axios from "axios";
-
+import loggedIn from "./LoggedIn";
+import endurl from "./endurl";
 const Login = () => {
-  function loggedIn() {
-    console.log("logged In chk");
-    axios
-      .post(
-        "https://inventory-manager-70zs.onrender.com/app/loggedIn",
-        {},
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        if (res.data === "userloggedIn") {
-          window.location.href = "http://localhost:3000";
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   function log(e) {
     e.preventDefault();
     const user = {
@@ -31,7 +11,7 @@ const Login = () => {
       password: document.getElementById("pwd").value,
     };
     axios
-      .post("https://inventory-manager-70zs.onrender.com/app/login", user, {
+      .post(endurl + "/login", user, {
         withCredentials: true,
       })
       .then((res) => {
@@ -67,26 +47,26 @@ const Login = () => {
             <h1 className="display-6 fw-bolder text-center mb-4 ">Login</h1>
             <form onSubmit={log}>
               <div className="mb-3 col-sm-10">
-                <label for="exampleFormControlInput1" class="form-label">
+                <label htmlFor="exampleFormControlInput1" className="form-label">
                   <h5>Email Address</h5>
                 </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="username"
                   placeholder="name@example.com"
                 />
               </div>
-              <div class="md-3">
-                <label for="inputPassword" class="col-sm-2 col-form-label">
+              <div className="md-3">
+                <label htmlFor="inputPassword" className="col-sm-2 col-form-label">
                   <h5>Password</h5>
                 </label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="pwd" />
+                <div className="col-sm-10">
+                  <input type="password" className="form-control" id="pwd" />
                 </div>
-                <div class="col-12 text-center pt-5">
+                <div className="col-12 text-center pt-5">
                   <button
-                    class="btn btn-primary w-50 text-center"
+                    className="btn btn-primary w-50 text-center"
                     type="submit"
                   >
                     Submit

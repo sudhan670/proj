@@ -22,34 +22,36 @@ const Contact = () => {
             </div>
             <div className="col-md-6">
               <form>
-                <div class="form-group pt-3">
-                  <label for="exampleFormControlInput1">Email Address:</label>
+                <div className="form-group pt-3">
+                  <label htmlFor="exampleFormControlInput1">
+                    Email Address:
+                  </label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="name@example.com"
                   />
                 </div>
-                <div class="form-group pt-3">
-                  <label for="exampleyourname">Your Name:</label>
+                <div className="form-group pt-3">
+                  <label htmlFor="exampleyourname">Your Name:</label>
                   <input
                     type="email"
-                    class="form-control"
+                    className="form-control"
                     id="exampleFormControlInput1"
                     placeholder="name"
                   />
                 </div>
-                <div class="form-group pt-3">
-                  <label for="exampleFormControlTextarea1">Message:</label>
+                <div className="form-group pt-3">
+                  <label htmlFor="exampleFormControlTextarea1">Message:</label>
                   <textarea
-                    class="form-control"
+                    className="form-control"
                     id="exampleFormControlTextarea1"
                     rows="3"
                   ></textarea>
                 </div>
-                <div class="form-group pt-3 text-center">
-                  <button type="button" class="btn btn-primary">
+                <div className="form-group pt-3 text-center">
+                  <button type="button" className="btn btn-primary">
                     SEND<i className="fa fa-paper-plane mt-90"></i>
                   </button>
                 </div>

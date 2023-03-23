@@ -1,29 +1,9 @@
 import React from "react";
 import regs from "../images/Login-rafiki.svg";
 import axios from "axios";
-
+import loggedIn from "./LoggedIn";
+import endurl from "./endurl";
 const Register = () => {
-  function loggedIn() {
-    console.log("logged In chk");
-    axios
-      .post(
-        "https://inventory-manager-70zs.onrender.com/app/loggedIn",
-        {},
-        {
-          withCredentials: true,
-        }
-      )
-      .then((res) => {
-        console.log(res);
-        if (res.data === "userloggedIn") {
-          window.location.href = "http://localhost:3000";
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }
-
   function reg(e) {
     e.preventDefault();
     if (
@@ -42,7 +22,7 @@ const Register = () => {
       pwd2: document.getElementById("pwd2").value,
     };
     axios
-      .post("https://inventory-manager-70zs.onrender.com/app/signup", user, {
+      .post(endurl + "/signup", user, {
         withCredentials: true,
       })
       .then((res) => {
@@ -76,55 +56,67 @@ const Register = () => {
           <div className="col-md-6 p-5">
             <h1 className="display-6 fw-bolder text-center mb-4 ">Register</h1>
             <form onSubmit={reg}>
-              <div class="mb-3 col-sm-10">
-                <label for="exampleFormControlInput1" class="form-label">
+              <div className="mb-3 col-sm-10">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
                   <h5>User Name</h5>
                 </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="username"
                   placeholder="yourname"
                 />
               </div>
-              <div class="mb-3 col-sm-10">
-                <label for="exampleFormControlInput1" class="form-label">
+              <div className="mb-3 col-sm-10">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
                   <h5>Email Address</h5>
                 </label>
                 <input
                   type="email"
-                  class="form-control"
+                  className="form-control"
                   id="email"
                   placeholder="name@example.com"
                 />
               </div>
-              <div class="mb-3 col-sm-10">
-                <label for="name" class="form-label">
+              <div className="mb-3 col-sm-10">
+                <label htmlFor="name" className="form-label">
                   <h5>Company</h5>
                 </label>
                 <input
                   type="text"
-                  class="form-control"
+                  className="form-control"
                   id="companyname"
                   placeholder="Company Name"
                 />
               </div>
-              <div class="md-3">
-                <label for="inputPassword" class="col-sm-2 col-form-label">
+              <div className="md-3">
+                <label
+                  htmlFor="inputPassword"
+                  className="col-sm-2 col-form-label"
+                >
                   <h5>Password</h5>
                 </label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="pwd1" />
+                <div className="col-sm-10">
+                  <input type="password" className="form-control" id="pwd1" />
                 </div>
-                <label for="inputPassword2" class="col-sm-2 col-form-label">
+                <label
+                  htmlFor="inputPassword2"
+                  className="col-sm-2 col-form-label"
+                >
                   <h5>ConfirmPassword</h5>
                 </label>
-                <div class="col-sm-10">
-                  <input type="password" class="form-control" id="pwd2" />
+                <div className="col-sm-10">
+                  <input type="password" className="form-control" id="pwd2" />
                 </div>
-                <div class="col-12 text-center pt-5">
+                <div className="col-12 text-center pt-5">
                   <button
-                    class="btn btn-primary w-50 text-center"
+                    className="btn btn-primary w-50 text-center"
                     type="submit"
                   >
                     Submit
