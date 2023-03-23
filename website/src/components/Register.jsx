@@ -7,7 +7,7 @@ const Register = () => {
     console.log("logged In chk");
     axios
       .post(
-        "http://localhost:4000/app/loggedIn",
+        "https://inventory-manager-70zs.onrender.com/app/loggedIn",
         {},
         {
           withCredentials: true,
@@ -42,7 +42,9 @@ const Register = () => {
       pwd2: document.getElementById("pwd2").value,
     };
     axios
-      .post("http://localhost:4000/app/signup", user, { withCredentials: true })
+      .post("https://inventory-manager-70zs.onrender.com/app/signup", user, {
+        withCredentials: true,
+      })
       .then((res) => {
         console.log(res);
         // window.location.href = "http://localhost:3000/login";

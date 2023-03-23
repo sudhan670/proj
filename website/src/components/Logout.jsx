@@ -6,7 +6,7 @@ const Logout = () => {
     console.log("Coming into logout");
     axios
       .post(
-        "http://localhost:4000/app/logout",
+        "https://inventory-manager-70zs.onrender.com/app/logout",
         {},
         {
           withCredentials: true,
