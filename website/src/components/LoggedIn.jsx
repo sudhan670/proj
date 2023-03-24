@@ -1,5 +1,5 @@
 import axios from "axios";
-import endurl from "./endurl";
+import {endurl} from "./url";
 function loggedIn() {
   console.log("chk for cookie");
   axios

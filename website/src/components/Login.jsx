@@ -1,28 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import login from "../images/login.svg";
 import axios from "axios";
 import loggedIn from "./LoggedIn";
-import endurl from "./endurl";
+import { endurl, fronturl } from "./url";
 const Login = () => {
+  const [user, setUser] = useState({ username: "", password: "" });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUser({ ...user, [name]: value });
+  };
+
   function log(e) {
     e.preventDefault();
-    const user = {
-      username: document.getElementById("username").value,
-      password: document.getElementById("pwd").value,
-    };
-    axios
-      .post(endurl + "/login", user, {
-        withCredentials: true,
-      })
-      .then((res) => {
-        console.log(res);
-        if (res.data === "home") {
-          window.location.href = "http://localhost:3000";
-        }
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    if (user.username && user.password){
+      axios
+        .post(endurl + "/login", user, {
+          withCredentials: true,
+        })
+        .then((res) => {
+          console.log(res);
+          if (res.data === "home") {
+            window.location.href = fronturl;
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    }
   }
 
   return (
@@ -56,8 +61,10 @@ const Login = () => {
                 <input
                   type="email"
                   className="form-control"
+                  name="username"
                   id="username"
                   placeholder="name@example.com"
+                  onChange={handleChange}
                 />
               </div>
               <div className="md-3">
@@ -68,7 +75,13 @@ const Login = () => {
                   <h5>Password</h5>
                 </label>
                 <div className="col-sm-10">
-                  <input type="password" className="form-control" id="pwd" />
+                  <input
+                    type="password"
+                    className="form-control"
+                    name="password"
+                    id="pwd"
+                    onChange={handleChange}
+                  />
                 </div>
                 <div className="col-12 text-center pt-5">
                   <button

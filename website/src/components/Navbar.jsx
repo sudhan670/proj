@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import endurl from "./endurl";
+import { endurl } from "./url";
 import axios from "axios";
 function Navbar() {
   function loggedIn() {
@@ -14,13 +14,12 @@ function Navbar() {
         }
       )
       .then((res) => {
-        console.log(res.data);
         if (res.data === "userloggedIn") {
           setStat(1);
         } else {
-          console.log(res.data);
           setStat(0);
         }
+        console.log(res.data);
       })
       .catch((err) => {
         console.log(err);
@@ -109,29 +108,6 @@ function Navbar() {
                 </Link>
               </div>
             )}
-
-            {/* <Link
-              to="/logout"
-              className="btn btn-primary ms-auto px-4 solid-pill "
-              type="submit"
-            >
-              :<i className="fa fa-sign-in me-2"></i>Logout
-            </Link>
-
-            <Link
-              to="/login"
-              className="btn btn-primary ms-auto px-4 solid-pill "
-              type="submit"
-            >
-              <i className="fa fa-sign-in me-2"></i>Login
-            </Link>
-            <Link
-              to="/register"
-              className="btn btn-outline-primary ms-2 px-4 solid-pill "
-              type="submit"
-            >
-              <i className="fa fa-user-plus me-2"></i>Register
-            </Link> */}
           </div>
         </div>
       </nav>
