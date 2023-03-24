@@ -2,7 +2,7 @@ import React from "react";
 import regs from "../images/Login-rafiki.svg";
 import axios from "axios";
 import loggedIn from "./LoggedIn";
-import endurl from "./endurl";
+import { endurl, fronturl } from "./url";
 const Register = () => {
   function reg(e) {
     e.preventDefault();
@@ -27,7 +27,7 @@ const Register = () => {
       })
       .then((res) => {
         console.log(res);
-        window.location.href = "http://localhost:3000/login";
+        window.location.href = fronturl;
       })
       .catch((err) => {
         console.log(err);

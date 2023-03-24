@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
-import endurl from "./endurl";
+import { endurl } from "./url";
 import axios from "axios";
 function Navbar() {
   function loggedIn() {

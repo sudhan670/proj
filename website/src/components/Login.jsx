@@ -2,7 +2,7 @@ import React from "react";
 import login from "../images/login.svg";
 import axios from "axios";
 import loggedIn from "./LoggedIn";
-import endurl from "./endurl";
+import { endurl, fronturl } from "./url";
 const Login = () => {
   function log(e) {
     e.preventDefault();
@@ -17,7 +17,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         if (res.data === "home") {
-          window.location.href = "http://localhost:3000";
+          window.location.href = fronturl;
         }
       })
       .catch((err) => {
