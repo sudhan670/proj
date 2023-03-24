@@ -1,5 +1,5 @@
-const urls = 1;
-export const endurl = 1
+const urls = 0;
+export const endurl = urls
   ? "https://inventory-manager-70zs.onrender.com/app"
   : "http://localhost:4000/app";
 export const fronturl = urls
