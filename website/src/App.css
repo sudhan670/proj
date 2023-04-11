@@ -1,45 +1,79 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
-#home{
-  background:rgb(0,101,219);
-  background:linear-gradient(90deg, rgb(0,101,219) 50%, rgb(0,212,255,1)
-  100%);
-  min-height:550px;
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap");
+#home {
+  background: rgb(0, 101, 219);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 101, 219) 50%,
+    rgb(0, 212, 255, 1) 100%
+  );
+  min-height: 550px;
   position: relative;
-  font-family: 'Poppins', sans-serif
+  font-family: "Poppins", sans-serif;
 }
-.card{
-  transition:0.5s ease;
-  font-family: 'Poppins', sans-serif
+.card {
+  transition: 0.5s ease;
+  font-family: "Poppins", sans-serif;
 }
-.card:hover{
-  cursor:pointer;
-  box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
-  font-family: 'Poppins', sans-serif
+.card:hover {
+  cursor: pointer;
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+  font-family: "Poppins", sans-serif;
 }
-.footer{
-  background:rgb(0,101,219);
-  background:linear-gradient(90deg, rgb(0,101,219) 50%, rgb(0,212,255,1)
-  100%);
-  min-height:250px;
-  font-family: 'Poppins', sans-serif
+.footer {
+  background: rgb(0, 101, 219);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 101, 219) 50%,
+    rgb(0, 212, 255, 1) 100%
+  );
+  min-height: 250px;
+  font-family: "Poppins", sans-serif;
 }
-.form{
-  background:rgb(0,101,219);
-  background:linear-gradient(90deg, rgb(0,101,219) 50%, rgb(0,212,255,1)
-  100%);
-  padding:0;
-  margin:0;
-  min-height:500px;
-  font-family: 'Poppins', sans-serif
+.form {
+  background: rgb(0, 101, 219);
+  background: linear-gradient(
+    90deg,
+    rgb(0, 101, 219) 50%,
+    rgb(0, 212, 255, 1) 100%
+  );
+  padding: 0;
+  margin: 0;
+  min-height: 500px;
+  font-family: "Poppins", sans-serif;
 }
-.footer .me-4{
-    font-weight:5px;
-    text-transform: none;
-    font-family: 'Poppins', sans-serif
+.footer .me-4 {
+  font-weight: 5px;
+  text-transform: none;
+  font-family: "Poppins", sans-serif;
 }
-.col-md-6 p-5{
+.col-md-6 p-5 {
   border-radius: 50px;
 }
-#service,#footer,.navbar-brand pt-3,.container{
-  font-family: 'Poppins', sans-serif
+#service,
+#footer,
+.navbar-brand pt-3,
+.container {
+  font-family: "Poppins", sans-serif;
+}
+
+.rmBor {
+  border: none !important;
+  --fa-border-color: inherit !important;
+}
+
+.VGD {
+  background-color: rgb(0, 101, 219) !important;
+  color: white;
+}
+
+a {
+  text-decoration: none !important;
+}
+
+.mobile-menu-icon {
+  display: none;
+}
+
+.trans {
+  transition: 0.5s !important;
 }
