@@ -18,7 +18,7 @@ const Contact = () => {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <img src={contact} className="w-75" alt="" />
+              <img src={contact} className="w-75" alt="Image1" />
             </div>
             <div className="col-md-6">
               <form>
@@ -50,9 +50,9 @@ const Contact = () => {
                     rows="3"
                   ></textarea>
                 </div>
-                <div className="form-group pt-3 text-center">
+                <div className="form-group pt-4 text-center">
                   <button type="button" className="btn btn-primary">
-                    SEND<i className="fa fa-paper-plane mt-90"></i>
+                    SEND<i className="fa fa-paper-plane"></i>
                   </button>
                 </div>
               </form>

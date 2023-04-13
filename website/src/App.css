@@ -67,7 +67,8 @@
 }
 
 a {
-  text-decoration: none !important;
+  text-decoration: none !important; 
+
 }
 
 .mobile-menu-icon {
@@ -76,4 +77,7 @@ a {
 
 .trans {
   transition: 0.5s !important;
+}
+.row{
+  padding:10px;
 }
