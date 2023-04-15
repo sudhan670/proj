@@ -35,11 +35,11 @@ const services = () => {
                   <div className="card-body">
                     <h5 className="card-title">Textile Products</h5>
                     <p className="card-text">
-                      Some quick example text to build on the card title and
-                      make up the bulk of the card's content.
+                      We are the Organization to make the Customer Satisfied their 
+                      daily needs and trust towards the materials
                     </p>
-                    <a href="#null" className="btn btn-primary">
-                      Go somewhere
+                    <a href="/services/products" className="btn btn-primary">
+                      View Products
                     </a>
                   </div>
                 </div>
@@ -54,7 +54,7 @@ const services = () => {
                       make up the bulk of the card's content.
                     </p>
                     <a href="/services/bill" className="btn btn-primary">
-                      Go somewhere
+                      Views Tax reports
                     </a>
                   </div>
                 </div>

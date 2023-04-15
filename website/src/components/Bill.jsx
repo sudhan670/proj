@@ -1,5 +1,4 @@
 import React from "react";
-import regs from "../images/Login-rafiki.svg";
 import axios from "axios";
 import loggedIn from "./LoggedIn";
 import { endurl, fronturl } from "./url";
@@ -38,30 +37,17 @@ const Register = () => {
       {loggedIn()}
       <div className="container shadow my-5">
         <div className="row justify-content-end">
-          <div className="col-md-5 d-flex flex-column align-items-center text-white form order-2">
-            <h2 className="display-4 fw-bolder text-white">
-              Hello TexMarters,
-            </h2>
-            <p className="lead text-center">Enter Your details to Register</p>
-            <h5 className="mb-4">OR</h5>
-            <img src={regs} width="250px" alt="registeralt" />
-            <a
-              href={"../login"}
-              className="btn btn-outline-light rounded-pill
-                     w-50"
-            >
-              Login
-            </a>
-          </div>
-          <div className="col-md-6 p-5">
-            <h1 className="display-6 fw-bolder text-center mb-4 ">Register</h1>
+          <div className="col-md-12 p-10">
+            <h1 className="display-6 fw-bolder text-center mb-4 ">
+              Add New Product
+            </h1>
             <form onSubmit={reg}>
-              <div className="mb-3 col-sm-10">
+              <div className="mb-6 col-sm-10">
                 <label
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  <h5>User Name</h5>
+                  <h5> Seller Name</h5>
                 </label>
                 <input
                   type="email"
@@ -70,60 +56,98 @@ const Register = () => {
                   placeholder="yourname"
                 />
               </div>
-              <div className="mb-3 col-sm-10">
+              <div className="mb-6 col-sm-10">
                 <label
                   htmlFor="exampleFormControlInput1"
                   className="form-label"
                 >
-                  <h5>Email Address</h5>
+                  <h5>Product Name</h5>
                 </label>
                 <input
                   type="email"
                   className="form-control"
-                  id="email"
-                  placeholder="name@example.com"
+                  id="username"
+                  placeholder="yourname"
                 />
               </div>
-              <div className="mb-3 col-sm-10">
-                <label htmlFor="name" className="form-label">
-                  <h5>Company</h5>
+              <br />
+              <div className="mb-6 col-sm-10">
+                <label
+                  htmlFor="exampleFormControlInput1"
+                  className="form-label"
+                >
+                  <h5>Quantity</h5>
                 </label>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
-                  id="companyname"
-                  placeholder="Company Name"
+                  id="email"
+                  placeholder="enter the quantity"
                 />
               </div>
-              <div className="md-3">
-                <label
-                  htmlFor="inputPassword"
-                  className="col-sm-2 col-form-label"
-                >
-                  <h5>Password</h5>
+              <br />
+              <div className="mb-6 col-sm-10">
+                <label htmlFor="exampleFormControlTextarea1">
+                  Product Description:
                 </label>
-                <div className="col-sm-10">
-                  <input type="password" className="form-control" id="pwd1" />
-                </div>
-                <label
-                  htmlFor="inputPassword2"
-                  className="col-sm-2 col-form-label"
-                >
-                  <h5>ConfirmPassword</h5>
+                <textarea
+                  className="form-control"
+                  id="exampleFormControlTextarea1"
+                  rows="3"
+                ></textarea>
+              </div>
+
+              <div class="mb-3 col-sm-10">
+                <label for="formFile" class="form-label">
+                  Upload The Image
                 </label>
-                <div className="col-sm-10">
-                  <input type="password" className="form-control" id="pwd2" />
+                <input class="form-control" type="file" id="formFile" />
+              </div>
+              <div>
+                <div className="mb-6 col-sm-10">
+                  <div style={{ float: "left" }}>
+                    <label
+                      htmlFor="exampleFormControlInput1"
+                      className="form-label"
+                    >
+                      <h5 style={{ padding: "10px" }}>Type</h5>
+                    </label>
+                    <select
+                      class="form-select"
+                      aria-label="Default select example"
+                    >
+                      <option>Dhoti</option>
+                      <option>Towel</option>
+                      <option>Saree</option>
+                    </select>
+                  </div>
+                  <div className="mb-6 col-sm-10">
+                    <div style={{ float: "right" }}>
+                      <label
+                        htmlFor="exampleFormControlInput1"
+                        className="form-label"
+                      >
+                        <i className="fa fa-inr"></i>Price
+                      </label>
+                      <input
+                        type="number"
+                        class="form-control"
+                        id="number"
+                        placeholder="Pricing Details"
+                        style={{ borderRadius: "5px" }}
+                      />
+                    </div>
+                  </div>
                 </div>
+              </div>
+              <div className="col-12 text-center pt-10">
                 <div className="col-12 text-center pt-5">
                   <button
                     className="btn btn-primary w-50 text-center"
                     type="submit"
                   >
-                    Submit
+                    Add This Product
                   </button>
-                </div>
-                <div>
-                  <h3 id="passwordmatch"> </h3>
                 </div>
               </div>
             </form>

@@ -13,7 +13,7 @@ const Footer = () => {
               <a href="founder#" className="me-4 text-reset">
                 <i className="fa fa-facebook"></i>
               </a>
-              <a href="foter#" className="me-4 text-reset">
+              <a href="footer#" className="me-4 text-reset">
                 <i className="fa fa-twitter"></i>
               </a>
               <a
