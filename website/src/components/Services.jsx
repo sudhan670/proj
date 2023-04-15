@@ -2,8 +2,20 @@ import React from "react";
 import portal from "../images/portal.svg";
 import shopping from "../images/shopping.svg";
 const services = () => {
+  function download() {
+    const service = document.getElementById("service");
+    const opt = {
+      margin: 1,
+      filename: "you name it",
+      img: { type: "jpeg", quality: 1 },
+      html2canvas: { scale: 2 },
+      jsPDF: { unit: "in", format: "letter", orientation: "portrait" },
+    };
+    window.html2pdf().from(service).set(opt).save();
+  }
   return (
     <div>
+      <button onClick={download}>download</button>
       <section id="service">
         <div className="container my-5 py-5">
           <div className="row">
