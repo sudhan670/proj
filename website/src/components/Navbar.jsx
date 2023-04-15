@@ -39,7 +39,7 @@ function Navbar() {
     <>
       <div className="d-flex justify-content-center VGD">
         <Link className="navbar-brand pt-3 " to="#">
-          <b>VGD TEXTILES</b>
+          <i><b>VGD TEXTILES</b></i>
         </Link>
       </div>
       <nav className="navbar navbar-expand-lg dark shadow pt-1">
