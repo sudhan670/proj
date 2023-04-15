@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Outlet, Link } from "react-router-dom";
 import { endurl } from "./url";
 import axios from "axios";
+import { But } from "./But";
 function Navbar() {
   function loggedIn() {
     console.log("Navbar chk");
@@ -31,6 +32,9 @@ function Navbar() {
   function ham() {
     setBurger(!burger);
   }
+  function hide() {
+    document.getElementById("ham").click();
+  }
   return (
     <>
       <div className="d-flex justify-content-center VGD">
@@ -40,23 +44,7 @@ function Navbar() {
       </div>
       <nav className="navbar navbar-expand-lg dark shadow pt-1">
         <div className="container-fluid">
-          <button
-            className="navbar-toggler trans rmBor"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-            onClick={ham}
-            id="ham"
-          >
-            {burger ? (
-              <i className="fa fa-bars btn btn-primary"></i>
-            ) : (
-              <i className="fa fa-times btn btn-primary"></i>
-            )}
-          </button>
+          <But ham={ham} burger={burger} />
 
           <div className="collapse navbar-collapse" id="navbarSupportedContent">
             <ul className="navbar-nav me-auto mb-2 mb-lg-0">
@@ -65,7 +53,7 @@ function Navbar() {
                   className="nav-link btn btn-outline-primary ms-2 px-4 solid-pill rmBor"
                   aria-current="page"
                   to="/"
-                  onClick="document.getElementById('ham').click()"
+                  onClick={hide}
                 >
                   Home
                 </Link>
@@ -74,7 +62,7 @@ function Navbar() {
                 <Link
                   className="nav-link btn btn-outline-primary ms-2 px-4 solid-pill rmBor"
                   to="/about"
-                  onClick="document.getElementById('ham').click()"
+                  onClick={hide}
                 >
                   About
                 </Link>
@@ -83,7 +71,7 @@ function Navbar() {
                 <Link
                   className="nav-link btn btn-outline-primary ms-2 px-4 solid-pill rmBor"
                   to="/contact"
-                  onClick="document.getElementById('ham').click()"
+                  onClick={hide}
                 >
                   Contact
                 </Link>
@@ -92,7 +80,7 @@ function Navbar() {
                 <Link
                   className="nav-link btn btn-outline-primary ms-2 px-4 solid-pill rmBor"
                   to="/services"
-                  onClick="document.getElementById('ham').click()"
+                  onClick={hide}
                 >
                   Services
                 </Link>
@@ -104,6 +92,7 @@ function Navbar() {
                 to="/logout"
                 className="btn btn-primary ms-auto px-4 solid-pill "
                 type="submit"
+                onClick={hide}
               >
                 :<i className="fa fa-sign-in me-2"></i>Logout
               </Link>
@@ -111,9 +100,9 @@ function Navbar() {
               <div>
                 <Link
                   to="/login"
+                  onClick={hide}
                   className="btn btn-primary ms-auto px-4 solid-pill "
                   type="submit"
-                  onClick="document.getElementById('ham').click()"
                 >
                   <i className="fa fa-sign-in me-2"></i>Login
                 </Link>
@@ -121,7 +110,7 @@ function Navbar() {
                   to="/register"
                   className="btn btn-outline-primary ms-2 px-4 solid-pill "
                   type="submit"
-                  onClick="document.getElementById('ham').click()"
+                  onClick={hide}
                 >
                   <i className="fa fa-user-plus me-2"></i>Register
                 </Link>
