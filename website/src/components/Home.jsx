@@ -1,5 +1,5 @@
 import React from 'react';
-
+import Contact from '../components/Contact';
 
 const Home = () => {
   return (
@@ -20,11 +20,16 @@ const Home = () => {
                         <button className="btn btn-primary me-4
                         rounded-pill px-4 py-2"> Get Quote</button>
                          <button className="btn btn-light 
-                        rounded-pill px-4 py-2">Our Services</button>
+                        rounded-pill px-4 py-2">Our Services
+                        </button>
                     </div>
                 </div>
                </div>
             </div>
+        </section>
+        <section>
+            <Contact/>
+
         </section>
     </div>
   
