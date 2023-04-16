@@ -1,6 +1,30 @@
 import React from "react";
+import { useRef } from "react";
 import contact from "../images/contact.svg";
+import emailjs from "@emailjs/browser";
 const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_wiu4s3i",
+        "template_wayx3pw",
+        form.current,
+        "bplErjb-7j_HSvWNc"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+  };
+
   return (
     <div>
       <section id="#contact">
@@ -21,40 +45,20 @@ const Contact = () => {
               <img src={contact} className="w-75" alt="Image1" />
             </div>
             <div className="col-md-6">
-              <form>
-                <div className="form-group pt-3">
-                  <label htmlFor="exampleFormControlInput1">
-                    Email Address:
-                  </label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="name@example.com"
-                  />
-                </div>
-                <div className="form-group pt-3">
-                  <label htmlFor="exampleyourname">Your Name:</label>
-                  <input
-                    type="email"
-                    className="form-control"
-                    id="exampleFormControlInput1"
-                    placeholder="name"
-                  />
-                </div>
-                <div className="form-group pt-3">
-                  <label htmlFor="exampleFormControlTextarea1">Message:</label>
-                  <textarea
-                    className="form-control"
-                    id="exampleFormControlTextarea1"
-                    rows="3"
-                  ></textarea>
-                </div>
-                <div className="form-group pt-4 text-center">
-                  <button type="button" className="btn btn-primary">
-                    SEND<i className="fa fa-paper-plane"></i>
-                  </button>
-                </div>
+              <form ref={form} onSubmit={sendEmail}>
+                <h1>Contact Form</h1>
+                <label>Name</label>
+                <input type="text" name="user_name" className="form-control" />
+                <br />
+                <label>Email</label>
+                <input type="text" name="user_email" className="form-control" />
+                <br />
+                <label>Message</label>
+                <textarea type="text" name="message" className="form-control" />
+                <br />
+                <button type="submit" value="Send" className="btn btn-primary">
+                  SEND<i className="fa fa-paper-plane"></i>
+                </button>
               </form>
             </div>
           </div>
