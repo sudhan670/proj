@@ -6,7 +6,7 @@ import About from "./components/About";
 import "./App.css";
 import Contact from "./components/Contact";
 import Services from "./components/Services";
-import Footer from "./components/Footer";
+import Footer from "./components/misc/Footer";
 import Login from "./components/Login";
 import Register from "./components/Register";
 import Logout from "./components/Logout";

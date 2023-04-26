@@ -1,40 +1,65 @@
-import React from "react";
+import React, { useState } from "react";
 import axios from "axios";
-import loggedIn from "./LoggedIn";
 import { endurl, fronturl } from "./url";
 const Register = () => {
-  function reg(e) {
-    e.preventDefault();
-    if (
-      document.getElementById("pwd1").value !==
-      document.getElementById("pwd2").value
-    ) {
-      document.getElementById("passwordmatch").textContent =
-        "Passwords does not match, Please try again";
+  const [url, setUrl] = useState("");
+  const [prod, setProd] = useState({
+    seller: "",
+    productName: "",
+    quantity: "",
+    desc: "",
+    type: "Dhoti",
+    price: "",
+  });
+  const handleChange = async (e) => {
+    const { name, value } = e.target;
+    if (name === "url") {
+      //Read files in the browser from client side with filereeader api
+      // const reader = new FileReader();
+      // reader.onload = () => {
+      //   const url = reader.result;
+      //   setProd({ ...prod, [name]: url });
+      //   console.log(url);
+      // };
+      // reader.readAsDataURL(e.target.files[0]);
+
+      await setUrl(e.target.files[0]);
       return;
     }
-    const user = {
-      username: document.getElementById("username").value,
-      email: document.getElementById("email").value,
-      company: document.getElementById("companyname").value,
-      password: document.getElementById("pwd1").value,
-      pwd2: document.getElementById("pwd2").value,
-    };
-    axios
-      .post(endurl + "/signup", user, {
+
+    setProd({ ...prod, [name]: value });
+  };
+  async function reg(e) {
+    e.preventDefault();
+    const formData = new FormData();
+    formData.append("file", url);
+    formData.append("upload_preset", "m0kouswk");
+    await axios
+      .post("https://api.cloudinary.com/v1_1/dcfzrzzyx/upload", formData)
+      .then((res) => (prod.url = res.data.url))
+      .catch((err) => console.log(err));
+    prod.quantity = parseInt(prod.quantity);
+    prod.price = parseInt(prod.price);
+    // //chk proper submission Done
+    // Send product to backend
+    console.log("product adding");
+    await axios
+      .post(endurl + "/addproduct", prod, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
+        console.log("in then");
+        //Change the location below to listing of all products
         window.location.href = fronturl;
       })
       .catch((err) => {
+        console.log("err");
         console.log(err);
       });
+    console.log("product after added");
   }
   return (
     <>
-      {loggedIn()}
       <div className="container shadow my-5">
         <div className="row justify-content-end">
           <div className="col-md-12 p-10">
@@ -42,6 +67,7 @@ const Register = () => {
               Add New Product
             </h1>
             <form onSubmit={reg}>
+              {/*seller name */}
               <div className="mb-6 col-sm-10">
                 <label
                   htmlFor="exampleFormControlInput1"
@@ -50,12 +76,15 @@ const Register = () => {
                   <h5> Seller Name</h5>
                 </label>
                 <input
-                  type="email"
+                  name="seller"
+                  type="text"
                   className="form-control"
-                  id="username"
-                  placeholder="yourname"
+                  placeholder="Seller Name"
+                  onChange={handleChange}
+                  required
                 />
               </div>
+              {/*Product name */}
               <div className="mb-6 col-sm-10">
                 <label
                   htmlFor="exampleFormControlInput1"
@@ -64,13 +93,17 @@ const Register = () => {
                   <h5>Product Name</h5>
                 </label>
                 <input
-                  type="email"
+                  name="productName"
+                  type="text"
                   className="form-control"
                   id="username"
                   placeholder="yourname"
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <br />
+              {/*Quantity */}
               <div className="mb-6 col-sm-10">
                 <label
                   htmlFor="exampleFormControlInput1"
@@ -79,67 +112,91 @@ const Register = () => {
                   <h5>Quantity</h5>
                 </label>
                 <input
+                  name="quantity"
                   type="number"
                   className="form-control"
-                  id="email"
                   placeholder="enter the quantity"
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <br />
+              {/*Desc */}
               <div className="mb-6 col-sm-10">
                 <label htmlFor="exampleFormControlTextarea1">
                   Product Description:
                 </label>
                 <textarea
+                  name="desc"
                   className="form-control"
-                  id="exampleFormControlTextarea1"
                   rows="3"
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
-
-              <div class="mb-3 col-sm-10">
-                <label for="formFile" class="form-label">
+              {/*Img upload */}
+              <div className="mb-3 col-sm-10">
+                <label htmlFor="formFile" className="form-label">
                   Upload The Image
                 </label>
-                <input class="form-control" type="file" id="formFile" />
+                <input
+                  name="url"
+                  className="form-control"
+                  type="file"
+                  accept="image/png,image/jpg,image/jpeg"
+                  onChange={handleChange}
+                  required
+                />
               </div>
+              {/*type and price */}
               <div>
-                <div className="mb-6 col-sm-10">
-                  <div style={{ float: "left" }}>
+                <div className="mb-6 col-sm-10" style={{}}>
+                  <div style={{ display: "flex", gap: "10px" }}>
                     <label
                       htmlFor="exampleFormControlInput1"
                       className="form-label"
+                      style={{ padding: "15px" }}
                     >
-                      <h5 style={{ padding: "10px" }}>Type</h5>
+                      Type
                     </label>
                     <select
-                      class="form-select"
+                      name="type"
+                      className="form-select"
                       aria-label="Default select example"
+                      onChange={handleChange}
                     >
                       <option>Dhoti</option>
                       <option>Towel</option>
                       <option>Saree</option>
                     </select>
                   </div>
+
                   <div className="mb-6 col-sm-10">
-                    <div style={{ float: "right" }}>
+                    <div
+                      style={{ display: "flex", padding: "15px", gap: "15px" }}
+                    >
                       <label
                         htmlFor="exampleFormControlInput1"
                         className="form-label"
                       >
                         <i className="fa fa-inr"></i>Price
                       </label>
+
                       <input
+                        name="price"
                         type="number"
-                        class="form-control"
+                        className="form-control"
                         id="number"
                         placeholder="Pricing Details"
-                        style={{ borderRadius: "5px" }}
+                        style={{ width: "fit-content" }}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
                 </div>
               </div>
+              {/*add prod */}
               <div className="col-12 text-center pt-10">
                 <div className="col-12 text-center pt-5">
                   <button

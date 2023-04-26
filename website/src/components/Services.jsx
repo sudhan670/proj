@@ -10,9 +10,7 @@ const services = () => {
             <div className="col-12">
               <h3 className="fs-15 text-center mb-0">Our Services</h3>
               <h1 className="display-6 text-center mb-4">
-                <b>
-                  Awesome <b>Services</b>
-                </b>
+                <b>Awesome Services</b>
               </h1>
               <hr className="w-25 mx-auto"></hr>
             </div>
@@ -23,8 +21,8 @@ const services = () => {
                   <div className="card-body">
                     <h5 className="card-title">Textile Products</h5>
                     <p className="card-text">
-                      We are the Organization to make the Customer Satisfied their 
-                      daily needs and trust towards the materials
+                      We are the Organization to make the Customer Satisfied
+                      their daily needs and trust towards the materials
                     </p>
                     <a href="/services/products" className="btn btn-primary">
                       View Products
