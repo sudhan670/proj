@@ -13,7 +13,7 @@ const Login = () => {
 
   function log(e) {
     e.preventDefault();
-    if (user.username && user.password){
+    if (user.username && user.password) {
       axios
         .post(endurl + "/login", user, {
           withCredentials: true,

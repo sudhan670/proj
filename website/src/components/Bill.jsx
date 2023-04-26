@@ -1,41 +1,65 @@
 import React, { useState } from "react";
 import axios from "axios";
-import loggedIn from "./LoggedIn";
 import { endurl, fronturl } from "./url";
 const Register = () => {
+  const [url, setUrl] = useState("");
   const [prod, setProd] = useState({
     seller: "",
     productName: "",
     quantity: "",
     desc: "",
-    url: "",
     type: "Dhoti",
     price: "",
   });
-  const handleChange = (e) => {
+  const handleChange = async (e) => {
     const { name, value } = e.target;
+    if (name === "url") {
+      //Read files in the browser from client side with filereeader api
+      // const reader = new FileReader();
+      // reader.onload = () => {
+      //   const url = reader.result;
+      //   setProd({ ...prod, [name]: url });
+      //   console.log(url);
+      // };
+      // reader.readAsDataURL(e.target.files[0]);
+
+      await setUrl(e.target.files[0]);
+      return;
+    }
+
     setProd({ ...prod, [name]: value });
   };
-  function reg(e) {
+  async function reg(e) {
     e.preventDefault();
-    //chk for proper submission
-
-    axios
+    const formData = new FormData();
+    formData.append("file", url);
+    formData.append("upload_preset", "m0kouswk");
+    await axios
+      .post("https://api.cloudinary.com/v1_1/dcfzrzzyx/upload", formData)
+      .then((res) => (prod.url = res.data.url))
+      .catch((err) => console.log(err));
+    prod.quantity = parseInt(prod.quantity);
+    prod.price = parseInt(prod.price);
+    // //chk proper submission Done
+    // Send product to backend
+    console.log("product adding");
+    await axios
       .post(endurl + "/addproduct", prod, {
         withCredentials: true,
       })
       .then((res) => {
-        console.log(res);
+        console.log("in then");
         //Change the location below to listing of all products
         window.location.href = fronturl;
       })
       .catch((err) => {
+        console.log("err");
         console.log(err);
       });
+    console.log("product after added");
   }
   return (
     <>
-      {loggedIn()}
       <div className="container shadow my-5">
         <div className="row justify-content-end">
           <div className="col-md-12 p-10">
@@ -52,10 +76,12 @@ const Register = () => {
                   <h5> Seller Name</h5>
                 </label>
                 <input
-                  type="email"
+                  name="seller"
+                  type="text"
                   className="form-control"
-                  id="username"
-                  placeholder="yourname"
+                  placeholder="Seller Name"
+                  onChange={handleChange}
+                  required
                 />
               </div>
               {/*Product name */}
@@ -67,10 +93,13 @@ const Register = () => {
                   <h5>Product Name</h5>
                 </label>
                 <input
-                  type="email"
+                  name="productName"
+                  type="text"
                   className="form-control"
                   id="username"
                   placeholder="yourname"
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <br />
@@ -83,10 +112,12 @@ const Register = () => {
                   <h5>Quantity</h5>
                 </label>
                 <input
+                  name="quantity"
                   type="number"
                   className="form-control"
-                  id="email"
                   placeholder="enter the quantity"
+                  onChange={handleChange}
+                  required
                 />
               </div>
               <br />
@@ -96,17 +127,26 @@ const Register = () => {
                   Product Description:
                 </label>
                 <textarea
+                  name="desc"
                   className="form-control"
-                  id="exampleFormControlTextarea1"
                   rows="3"
+                  onChange={handleChange}
+                  required
                 ></textarea>
               </div>
               {/*Img upload */}
               <div className="mb-3 col-sm-10">
-                <label for="formFile" className="form-label">
+                <label htmlFor="formFile" className="form-label">
                   Upload The Image
                 </label>
-                <input className="form-control" type="file" id="formFile" />
+                <input
+                  name="url"
+                  className="form-control"
+                  type="file"
+                  accept="image/png,image/jpg,image/jpeg"
+                  onChange={handleChange}
+                  required
+                />
               </div>
               {/*type and price */}
               <div>
@@ -120,8 +160,10 @@ const Register = () => {
                       Type
                     </label>
                     <select
+                      name="type"
                       className="form-select"
                       aria-label="Default select example"
+                      onChange={handleChange}
                     >
                       <option>Dhoti</option>
                       <option>Towel</option>
@@ -141,11 +183,14 @@ const Register = () => {
                       </label>
 
                       <input
+                        name="price"
                         type="number"
                         className="form-control"
                         id="number"
                         placeholder="Pricing Details"
                         style={{ width: "fit-content" }}
+                        onChange={handleChange}
+                        required
                       />
                     </div>
                   </div>
