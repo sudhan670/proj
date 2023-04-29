@@ -35,9 +35,9 @@ const Footer = () => {
           </section>
 
           <section id="#money" className="text-white">
-            <div className="container text-center text-md-start mt-5 text-white">
+            <div className="container text-center text-md-start mt-0 text-white">
               <div className="row">
-                <div className="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                <div className="col-md-4 mx-auto mb-2">
                   <h6 className="text-uppercase fw-bold mb-4">
                     <i className="fas fa-gem me-3"></i>VGD TEXTILE MANUFACTURER
                   </h6>
@@ -47,7 +47,7 @@ const Footer = () => {
                   </p>
                 </div>
 
-                <div className="col-md-4 col-lg-4 col-xl-4 mx-auto mb-4">
+                <div className="col-md-4 mx-auto mb-0">
                   <h6 className="text-uppercase fw-bold mb-4">About</h6>
                   <p>
                     <a href="#!" className="text-reset">
@@ -70,7 +70,7 @@ const Footer = () => {
                     </a>
                   </p>
                 </div>
-                <div className="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                <div className="col-md-4 mx-auto mb-4">
                   <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
                   <p>
                     <i className="fa fa-home me-3"></i>6/72C,Anna
@@ -89,14 +89,15 @@ const Footer = () => {
                 </div>
               </div>
             </div>
-          </section>
-
-          <div className="text-center p-4 text-white">
-            © 2023 Copyright:
+            <div className="text-center p-4 text-white">
+            ©Copyright @2023:
             <a className="text-reset fw-bold" href="https://vgd.com/">
               vgdtexiles
             </a>
           </div>
+          </section>
+
+          
         </footer>
       </section>
     </div>
