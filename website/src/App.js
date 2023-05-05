@@ -13,6 +13,8 @@ import Logout from "./components/Logout";
 import Bill from "./components/Bill";
 import Product from "./components/Products";
 import ProductDesc from "./components/Productdesc";
+import NewProduct from "./components/Actions/Newproduct";
+
 function App() {
   return (
     <div className="App">
@@ -24,6 +26,7 @@ function App() {
         <Route path="/services/bill" element={<Bill />} />
         <Route path="/services/products" element={<Product />} />
         <Route path="/services/products/productdesc" element={<ProductDesc />}/>
+        <Route path="/services/products/Newproduct" element={<NewProduct/>}/>
         <Route path="/contact" element={<Contact />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />

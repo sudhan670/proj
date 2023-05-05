@@ -3,6 +3,7 @@ import { Outlet, Link } from "react-router-dom";
 import { endurl } from "./url";
 import axios from "axios";
 import { But } from "./misc/But";
+import fas from "../images/fashion.jpg";
 function Navbar() {
   function loggedIn() {
     console.log("Navbar chk");
@@ -38,9 +39,22 @@ function Navbar() {
   return (
     <>
       <div className="d-flex justify-content-center VGD">
-        <Link className="navbar-brand pt-3 " to="#">
-          <i><b>VGD TEXTILES</b></i>
-        </Link>
+        <div className="container">
+          <div className="col-md-10">
+            <a className="navbar-brand" href="/screen">
+              <img src={fas} alt="..." height="100" width="120" />
+            </a>
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span className="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+        <div className="col-md-2 pt-4">
+          <button className="btn btn-outline-info px-2 py-2">
+            <a href=""></a>
+            Become a Seller
+          </button>
+        </div>
       </div>
       <nav className="navbar navbar-expand-lg dark shadow pt-1">
         <div className="container-fluid">
@@ -113,6 +127,9 @@ function Navbar() {
                   onClick={hide}
                 >
                   <i className="fa fa-user-plus me-2"></i>Register
+                </Link>
+                <Link>
+                <button type="button" className="btn btn-light"><span className="bi bi-cart"></span></button>
                 </Link>
               </div>
             )}
