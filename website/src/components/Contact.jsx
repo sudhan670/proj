@@ -4,7 +4,6 @@ import contact from "../images/contact.svg";
 import emailjs from "@emailjs/browser";
 const Contact = () => {
   const form = useRef();
-
   const sendEmail = (e) => {
     e.preventDefault();
 
@@ -42,7 +41,7 @@ const Contact = () => {
           </div>
           <div className="row">
             <div className="col-md-6">
-              <img src={contact} className="w-75" alt="Image1" />
+              <img src={contact} alt="" className="w-75" />
             </div>
             <div className="col-md-6">
               <form ref={form} onSubmit={sendEmail}>

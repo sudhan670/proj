@@ -8,7 +8,7 @@ const About = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-6">
-              <img src={Mobile} className="w-75 mt-5" alt="Mobile img" />
+              <img src={Mobile} className="w-75 mt-5" alt="" />
             </div>
             <div className="col-md-6">
               <h3 className="fs-10 mb-0 pt-5">About us</h3>
